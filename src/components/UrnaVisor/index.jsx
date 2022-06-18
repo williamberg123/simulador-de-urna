@@ -10,12 +10,16 @@ import StyledUrnaVisor from './styles';
 import CandidateInfo from '../CandidateInfo';
 
 export default function UrnaVisor() {
-	const { candidates, candidateNumber, isLoadingVote } = useContext(AppContext);
+	const {
+		candidates, candidateNumber, isLoadingVote, isStartedTheVotation,
+		voteWasConfirmed, isVoteBlank,
+	} = useContext(AppContext);
+
 	const candidateVoted = candidates.find(({ number }) => number == candidateNumber);
 
 	return (
 		<StyledUrnaVisor>
-			<RenderIf isTrue={ !candidateNumber && !isLoadingVote }>
+			<RenderIf isTrue={ !isStartedTheVotation}>
 				<Image className="jtf-image" source={jtfImage} />
 			</RenderIf>
 
@@ -23,13 +27,28 @@ export default function UrnaVisor() {
 				Processando voto ...
 			</RenderIf>
 
-			<RenderIf isTrue={ !!candidateNumber && !isLoadingVote }>
+			<RenderIf isTrue={
+				!isLoadingVote && isStartedTheVotation && !voteWasConfirmed && !isVoteBlank
+			}
+			>
 				<CandidateInfo candidate={candidateVoted || {}} />
 				<RenderIf isTrue={ !!candidateVoted }>
 					<figure>
 						<Image source={candidateVoted?.imageSource || ''} />
 					</figure>
 				</RenderIf>
+			</RenderIf>
+
+			<RenderIf isTrue={ voteWasConfirmed && !isVoteBlank }>
+				<div className="votation-ended">
+					<h1>FIM</h1>
+				</div>
+			</RenderIf>
+
+			<RenderIf isTrue={ isVoteBlank }>
+				<div className="votation-ended">
+					<h1>VOTO BRANCO</h1>
+				</div>
 			</RenderIf>
 		</StyledUrnaVisor>
 	);

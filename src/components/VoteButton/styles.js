@@ -4,7 +4,7 @@ const StyledVoteButton = styled.button`
 	padding: 20px;
 	background-color: ${({ buttonColor }) => buttonColor};
 	border: 1px solid #222;
-	box-shadow: 5px -5px ${({ buttonColor }) => buttonColor};
+	box-shadow: 5px -5px ${({ shadowColor }) => shadowColor};
 	margin-top: 20px;
 	border-radius: 5px;
 	font-weight: bold;

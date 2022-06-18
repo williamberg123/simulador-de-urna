@@ -30,5 +30,18 @@ const StyledUrnaVisor = styled.div`
 		height: inherit;
 		border-radius: 10px;
 	}
+
+	& .votation-ended {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	& .votation-ended > h1 {
+		font-size: 5rem;
+		text-align: center;
+	}
 `;
 export default StyledUrnaVisor;

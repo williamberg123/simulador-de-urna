@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import AppContext from './AppContext';
 import candidatesList from './data';
+import emitAudio from '../../utils/emitAudio';
 
 import confirmVoteAudio from '../../audios/confirm.mp3';
 import clickButtonAudio from '../../audios/click.mp3';
@@ -10,6 +11,9 @@ import clickButtonAudio from '../../audios/click.mp3';
 export default function AppProvider({ children }) {
 	const [ candidateNumber, setCandidateNumber ] = useState('');
 	const [ isLoadingVote, setIsLoadingVote ] = useState(false);
+	const [ voteWasConfirmed, setVoteWasConfirmed ] = useState(false);
+	const [ isStartedTheVotation, setIsStartedTheVotation ] = useState(false);
+	const [ isVoteBlank, setIsVoteBlank ] = useState(false);
 	const [ candidates ] = useState(candidatesList);
 
 	const handleClickNumber = useCallback((e) => {
@@ -17,40 +21,54 @@ export default function AppProvider({ children }) {
 		const number = e.target.value;
 		setCandidateNumber((last) => `${last}${number}`);
 
-		const audio = new Audio(clickButtonAudio);
-		audio.play();
+		emitAudio(clickButtonAudio);
+
+		setVoteWasConfirmed(false);
+		setIsStartedTheVotation(true);
 	}, [candidateNumber]);
 
 	const toConfirmVote = useCallback(() => {
-		if (candidateNumber.length < 2) {
+		if (candidateNumber.length < 2 && !isVoteBlank) {
 			alert('Por favor, digite um número de candidato completo');
 			return;
 		}
 
-		setIsLoadingVote(true);
+		emitAudio(clickButtonAudio);
 
-		const audio = new Audio(confirmVoteAudio);
-		audio.play();
+		setIsLoadingVote(true);
+		setIsVoteBlank(false);
+
+		emitAudio(confirmVoteAudio);
 
 		setTimeout(() => {
 			setIsLoadingVote(false);
 			setCandidateNumber('');
+			setVoteWasConfirmed(true);
 		}, 3000);
-	}, [candidateNumber]);
+	}, [candidateNumber, isVoteBlank]);
 
 	const toCorrectVote = useCallback(() => {
+		emitAudio(clickButtonAudio);
 		setCandidateNumber('');
+		setIsVoteBlank(false);
+	}, []);
+
+	const blankVote = useCallback(() => {
+		emitAudio(clickButtonAudio);
+		setIsVoteBlank(true);
+		setIsStartedTheVotation(true);
+		setVoteWasConfirmed(false);
 	}, []);
 
 	const memoizedContext = useMemo(
 		() => (
 			{
 				candidates, candidateNumber, handleClickNumber, toConfirmVote, toCorrectVote,
-				isLoadingVote,
+				isLoadingVote, isStartedTheVotation, voteWasConfirmed, isVoteBlank, blankVote,
 			}
 		),
 			[
-				candidateNumber, isLoadingVote,
+				candidateNumber, isLoadingVote, isStartedTheVotation, voteWasConfirmed, isVoteBlank,
 			],
 		);
 
