@@ -10,8 +10,8 @@ export default function VoteContainer() {
 	return (
 		<StyledVoteContainer>
 			<VoteButton funcClick={blankVote} buttonColor="white" shadowColor="rgb(216, 216, 216)">Branco</VoteButton>
-			<VoteButton funcClick={toCorrectVote} buttonColor="darkorange" shadowColor="rgb(221, 122, 0)">Corrigir</VoteButton>
-			<VoteButton funcClick={toConfirmVote} buttonColor="green" shadowColor="darkgreen">Confirmar</VoteButton>
+			<VoteButton funcClick={toCorrectVote} buttonColor="darkorange" shadowColor="rgb(221, 122, 0)">Corrige</VoteButton>
+			<VoteButton funcClick={toConfirmVote} buttonColor="green" shadowColor="darkgreen">Confirma</VoteButton>
 		</StyledVoteContainer>
 	);
 }

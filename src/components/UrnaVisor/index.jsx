@@ -12,7 +12,7 @@ import CandidateInfo from '../CandidateInfo';
 export default function UrnaVisor() {
 	const {
 		candidates, candidateNumber, isLoadingVote, isStartedTheVotation,
-		voteWasConfirmed, isVoteBlank,
+		voteWasConfirmed, isVoteBlank, isNullVote,
 	} = useContext(AppContext);
 
 	const candidateVoted = candidates.find(({ number }) => number == candidateNumber);
@@ -29,6 +29,7 @@ export default function UrnaVisor() {
 
 			<RenderIf isTrue={
 				!isLoadingVote && isStartedTheVotation && !voteWasConfirmed && !isVoteBlank
+				&& !isNullVote
 			}
 			>
 				<CandidateInfo candidate={candidateVoted || {}} />
@@ -39,7 +40,7 @@ export default function UrnaVisor() {
 				</RenderIf>
 			</RenderIf>
 
-			<RenderIf isTrue={ voteWasConfirmed && !isVoteBlank }>
+			<RenderIf isTrue={ voteWasConfirmed && isStartedTheVotation }>
 				<div className="votation-ended">
 					<h1>FIM</h1>
 				</div>
@@ -48,6 +49,12 @@ export default function UrnaVisor() {
 			<RenderIf isTrue={ isVoteBlank }>
 				<div className="votation-ended">
 					<h1>VOTO BRANCO</h1>
+				</div>
+			</RenderIf>
+
+			<RenderIf isTrue={ isNullVote }>
+				<div className="votation-ended">
+					<h1>VOTO NULO</h1>
 				</div>
 			</RenderIf>
 		</StyledUrnaVisor>

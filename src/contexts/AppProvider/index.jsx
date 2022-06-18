@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import AppContext from './AppContext';
@@ -14,7 +14,14 @@ export default function AppProvider({ children }) {
 	const [ voteWasConfirmed, setVoteWasConfirmed ] = useState(false);
 	const [ isStartedTheVotation, setIsStartedTheVotation ] = useState(false);
 	const [ isVoteBlank, setIsVoteBlank ] = useState(false);
+	const [ isNullVote, setIsNullVote ] = useState(false);
 	const [ candidates ] = useState(candidatesList);
+
+	useEffect(() => {
+		const candidateVoted = candidates.find(({ number }) => number == candidateNumber);
+
+		if (candidateNumber.length === 2 && !candidateVoted) setIsNullVote(true);
+	}, [candidateNumber]);
 
 	const handleClickNumber = useCallback((e) => {
 		if (candidateNumber.length >= 2) return;
@@ -37,6 +44,7 @@ export default function AppProvider({ children }) {
 
 		setIsLoadingVote(true);
 		setIsVoteBlank(false);
+		setIsNullVote(false);
 
 		emitAudio(confirmVoteAudio);
 
@@ -44,6 +52,10 @@ export default function AppProvider({ children }) {
 			setIsLoadingVote(false);
 			setCandidateNumber('');
 			setVoteWasConfirmed(true);
+
+			setTimeout(() => {
+				setIsStartedTheVotation(false);
+			}, 2000);
 		}, 3000);
 	}, [candidateNumber, isVoteBlank]);
 
@@ -51,6 +63,7 @@ export default function AppProvider({ children }) {
 		emitAudio(clickButtonAudio);
 		setCandidateNumber('');
 		setIsVoteBlank(false);
+		setIsNullVote(false);
 	}, []);
 
 	const blankVote = useCallback(() => {
@@ -58,6 +71,7 @@ export default function AppProvider({ children }) {
 		setIsVoteBlank(true);
 		setIsStartedTheVotation(true);
 		setVoteWasConfirmed(false);
+		setIsNullVote(false);
 	}, []);
 
 	const memoizedContext = useMemo(
@@ -65,10 +79,12 @@ export default function AppProvider({ children }) {
 			{
 				candidates, candidateNumber, handleClickNumber, toConfirmVote, toCorrectVote,
 				isLoadingVote, isStartedTheVotation, voteWasConfirmed, isVoteBlank, blankVote,
+				isNullVote,
 			}
 		),
 			[
 				candidateNumber, isLoadingVote, isStartedTheVotation, voteWasConfirmed, isVoteBlank,
+				isNullVote,
 			],
 		);
 
