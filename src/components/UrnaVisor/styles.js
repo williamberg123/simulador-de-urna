@@ -11,17 +11,18 @@ const StyledUrnaVisor = styled.div`
 	& > img {
 		width: 100%;
 		height: auto;
-		box-shadow: 2px 2px 7px #777;
 		border-radius: 5px;
 	}
 
 	& > img.jtf-image {
 		height: 100%;
+		border: 1px solid #999;
 	}
 
 	& > figure {
-		width: 150px;
+		width: 120px;
 		aspect-ratio: 1/1;
+		margin-top: 20px;
 	}
 
 	& > figure > img {

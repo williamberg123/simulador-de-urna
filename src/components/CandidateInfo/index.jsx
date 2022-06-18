@@ -25,6 +25,6 @@ CandidateInfo.propTypes = {
 	candidate: PropTypes.shape({
 		name: PropTypes.string,
 		partido: PropTypes.string,
-		number: PropTypes.number,
+		number: PropTypes.string,
 	}),
 };

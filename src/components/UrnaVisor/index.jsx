@@ -10,17 +10,20 @@ import StyledUrnaVisor from './styles';
 import CandidateInfo from '../CandidateInfo';
 
 export default function UrnaVisor() {
-	const { candidates, candidateNumber } = useContext(AppContext);
+	const { candidates, candidateNumber, isLoadingVote } = useContext(AppContext);
 	const candidateVoted = candidates.find(({ number }) => number == candidateNumber);
-	console.log(candidateVoted);
 
 	return (
 		<StyledUrnaVisor>
-			<RenderIf isTrue={ !candidateNumber }>
+			<RenderIf isTrue={ !candidateNumber && !isLoadingVote }>
 				<Image className="jtf-image" source={jtfImage} />
 			</RenderIf>
 
-			<RenderIf isTrue={ !!candidateNumber }>
+			<RenderIf isTrue={ isLoadingVote }>
+				Processando voto ...
+			</RenderIf>
+
+			<RenderIf isTrue={ !!candidateNumber && !isLoadingVote }>
 				<CandidateInfo candidate={candidateVoted || {}} />
 				<RenderIf isTrue={ !!candidateVoted }>
 					<figure>

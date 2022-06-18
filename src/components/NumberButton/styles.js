@@ -6,7 +6,7 @@ const StyledNumberButton = styled.button`
 	background-color: #111;
 	color: white;
 	border: none;
-	box-shadow: 5px 5px black;
+	box-shadow: 5px -5px black;
 	border: 1px solid black;
 	user-select: none;
 	cursor: pointer;
@@ -14,7 +14,7 @@ const StyledNumberButton = styled.button`
 
 	&:active {
 		box-shadow: none;
-		transform: translateX(5px) translateY(5px);
+		transform: translateX(5px) translateY(-5px);
 	}
 `;
 export default StyledNumberButton;

@@ -1,5 +1,6 @@
 import NumberButton from '../../components/NumberButton';
 import NumbersContainer from '../NumbersContainer';
+import VoteContainer from '../VoteContainer';
 import StyledButtonsContainer from './styles';
 
 export default function ButtonsContainer() {
@@ -14,6 +15,7 @@ export default function ButtonsContainer() {
 			<NumbersContainer>
 				{numberButtons}
 			</NumbersContainer>
+			<VoteContainer />
 		</StyledButtonsContainer>
 	);
 }

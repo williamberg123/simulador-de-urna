@@ -35,5 +35,6 @@ module.exports = {
 		'react/no-array-index-key': 'off',
 		'react/require-default-props': 'off',
 		eqeqeq: 'off',
+		'no-alert': 'off',
 	},
 };
