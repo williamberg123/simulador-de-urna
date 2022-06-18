@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/simulador-de-urna/static/js/main.85ac5e8f.js",
+    "static/media/bolsonaro.jpg": "/simulador-de-urna/static/media/bolsonaro.e8254a77708402206660.jpg",
+    "static/media/lula.jpeg": "/simulador-de-urna/static/media/lula.bf09bb68ecf3fa29c234.jpeg",
+    "static/media/confirm.mp3": "/simulador-de-urna/static/media/confirm.789ff997687388e60618.mp3",
+    "static/media/pablo-marcal.jpg": "/simulador-de-urna/static/media/pablo-marcal.811b43f62fe08e034488.jpg",
+    "static/media/click.mp3": "/simulador-de-urna/static/media/click.558ce3a196bdfc389c1f.mp3",
+    "static/media/ciro.webp": "/simulador-de-urna/static/media/ciro.807356aa47c3d51ef039.webp",
+    "static/media/eymael.jpg": "/simulador-de-urna/static/media/eymael.ca181da07fa22b31baa3.jpg",
+    "static/media/leonardo-pericles.jpg": "/simulador-de-urna/static/media/leonardo-pericles.e064928d4c350f824bcd.jpg",
+    "static/media/andre-janones.jpg": "/simulador-de-urna/static/media/andre-janones.5fd7a9ac5b5e80aba63c.jpg",
+    "static/media/luiz-felipe.jpg": "/simulador-de-urna/static/media/luiz-felipe.b24e33a68d850e98ecd9.jpg",
+    "static/media/luciano-bivar.jpeg": "/simulador-de-urna/static/media/luciano-bivar.d70f81593186c4bb5506.jpeg",
+    "static/media/simone-tebet.webp": "/simulador-de-urna/static/media/simone-tebet.10b4018e23d587b9333d.webp",
+    "index.html": "/simulador-de-urna/index.html",
+    "main.85ac5e8f.js.map": "/simulador-de-urna/static/js/main.85ac5e8f.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.85ac5e8f.js"
+  ]
+}
