@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/simulador-de-urna/static/js/main.a5950111.js",
+    "main.js": "/simulador-de-urna/static/js/main.38fc9cf7.js",
     "static/media/bolsonaro.jpg": "/simulador-de-urna/static/media/bolsonaro.e8254a77708402206660.jpg",
     "static/media/lula.jpeg": "/simulador-de-urna/static/media/lula.bf09bb68ecf3fa29c234.jpeg",
     "static/media/confirm.mp3": "/simulador-de-urna/static/media/confirm.789ff997687388e60618.mp3",
@@ -14,9 +14,9 @@
     "static/media/luciano-bivar.jpeg": "/simulador-de-urna/static/media/luciano-bivar.d70f81593186c4bb5506.jpeg",
     "static/media/simone-tebet.webp": "/simulador-de-urna/static/media/simone-tebet.10b4018e23d587b9333d.webp",
     "index.html": "/simulador-de-urna/index.html",
-    "main.a5950111.js.map": "/simulador-de-urna/static/js/main.a5950111.js.map"
+    "main.38fc9cf7.js.map": "/simulador-de-urna/static/js/main.38fc9cf7.js.map"
   },
   "entrypoints": [
-    "static/js/main.a5950111.js"
+    "static/js/main.38fc9cf7.js"
   ]
 }
