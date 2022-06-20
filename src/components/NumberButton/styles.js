@@ -16,5 +16,11 @@ const StyledNumberButton = styled.button`
 		box-shadow: none;
 		transform: translateX(5px) translateY(-5px);
 	}
+
+	@media (max-width: 801px) {
+		& {
+			background-color: rgb(26, 26, 26);
+		}
+	}
 `;
 export default StyledNumberButton;
