@@ -16,6 +16,7 @@ export default function AppProvider({ children }) {
 	const [ isVoteBlank, setIsVoteBlank ] = useState(false);
 	const [ isNullVote, setIsNullVote ] = useState(false);
 	const [ candidates ] = useState(candidatesList);
+	const [ isDisabled, setIsDisabled ] = useState(false);
 
 	useEffect(() => {
 		const candidateVoted = candidates.find(({ number }) => number == candidateNumber);
@@ -45,6 +46,7 @@ export default function AppProvider({ children }) {
 		setIsLoadingVote(true);
 		setIsVoteBlank(false);
 		setIsNullVote(false);
+		setIsDisabled(true);
 
 		emitAudio(confirmVoteAudio);
 
@@ -55,6 +57,7 @@ export default function AppProvider({ children }) {
 
 			setTimeout(() => {
 				setIsStartedTheVotation(false);
+				setIsDisabled(false);
 			}, 2000);
 		}, 3000);
 	}, [candidateNumber, isVoteBlank]);
@@ -79,12 +82,12 @@ export default function AppProvider({ children }) {
 			{
 				candidates, candidateNumber, handleClickNumber, toConfirmVote, toCorrectVote,
 				isLoadingVote, isStartedTheVotation, voteWasConfirmed, isVoteBlank, blankVote,
-				isNullVote,
+				isNullVote, isDisabled,
 			}
 		),
 			[
 				candidateNumber, isLoadingVote, isStartedTheVotation, voteWasConfirmed, isVoteBlank,
-				isNullVote,
+				isNullVote, isDisabled,
 			],
 		);
 

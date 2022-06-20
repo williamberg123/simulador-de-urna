@@ -36,5 +36,6 @@ module.exports = {
 		'react/require-default-props': 'off',
 		eqeqeq: 'off',
 		'no-alert': 'off',
+		'react/jsx-indent-props': 'off',
 	},
 };

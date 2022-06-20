@@ -5,10 +5,10 @@ import AppContext from '../../contexts/AppProvider/AppContext';
 import StyledNumberButton from './styles';
 
 export default function NumberButton({ number }) {
-	const { handleClickNumber } = useContext(AppContext);
+	const { handleClickNumber, isDisabled } = useContext(AppContext);
 
 	return (
-		<StyledNumberButton value={number} onClick={handleClickNumber}>
+		<StyledNumberButton disabled={isDisabled} value={number} onClick={handleClickNumber}>
 			{number}
 		</StyledNumberButton>
 	);
